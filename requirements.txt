@@ -1,1 +1,2 @@
 pip install pypmml
+pypmml /home/project/location
