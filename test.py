@@ -4,14 +4,16 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import pickle
+import sklearn
 
 
 def predict(LockDownType, CaseNumber, DateRange, SocialDistancing, PeriodEnforce):
     # loading the trained model
     pickle_in = open('classifier.pkl', 'rb')
     classifier = pickle.load(pickle_in)
+    if LockDownType == 'PKP':
+        lockdown_types = 1
 
-    lockdown_types = LockDownType
     date_range = DateRange
     social_distancing_rate = SocialDistancing
     cases = CaseNumber
