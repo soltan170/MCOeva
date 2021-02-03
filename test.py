@@ -3,7 +3,21 @@ import streamlit as st
 # working with sample data.
 import numpy as np
 import pandas as pd
+from pypmml import Model
 
+
+def predict(LockDownType, CaseNumber, DateRange, SocialDistancing, PeriodEnforce):
+
+    model = Model.fromFile('mcoDT.pmml')
+    result = model.predict({
+        "lockdown_types" : LockDownType,
+        "date_range" : DateRange,
+        "social_distancing_rate" : SocialDistancing,
+        "cases" : CaseNumber,
+        "period_enforce" : PeriodEnforce
+
+    })
+    return result
 
 def main():
     # front end elements of the web page
@@ -29,7 +43,7 @@ def main():
     # when 'Predict' is clicked, make the prediction and store it
     if st.button("Predict"):
         # prediction method calling
-        #result =
+        result = predict(LockDownType, CaseNumber, DateRange, SocialDistancing, PeriodEnforce)
         st.success('The MCO status: {}'.format(result))
 
 
