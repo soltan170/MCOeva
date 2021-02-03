@@ -3,21 +3,25 @@ import streamlit as st
 # working with sample data.
 import numpy as np
 import pandas as pd
-from pypmml import Model
+import pickle
+import sklearn
 
 
 def predict(LockDownType, CaseNumber, DateRange, SocialDistancing, PeriodEnforce):
+    # loading the trained model
+    pickle_in = open('classifier.pkl', 'rb')
+    classifier = pickle.load(pickle_in)
 
-    model = Model.fromFile("mcoDT.pmml")
-    result = model.predict({
-        "lockdown_types" : LockDownType,
-        "date_range" : DateRange,
-        "social_distancing_rate" : SocialDistancing,
-        "cases" : CaseNumber,
-        "period_enforce" : PeriodEnforce
+    lockdown_types = LockDownType
+    date_range = DateRange
+    social_distancing_rate = SocialDistancing
+    cases = CaseNumber
+    period_enforce = PeriodEnforce
 
-    })
-    return result
+
+    prediction = classifier.predict(
+        [[lockdown_types, date_range, social_distancing_rate, cases, period_enforce]])
+    return prediction
 
 def main():
     # front end elements of the web page
