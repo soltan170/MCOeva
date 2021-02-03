@@ -8,7 +8,7 @@ from pypmml import Model
 
 def predict(LockDownType, CaseNumber, DateRange, SocialDistancing, PeriodEnforce):
 
-    model = Model.fromFile('mcoDT.pmml')
+    model = Model.fromFile(mcoDT.pmml)
     result = model.predict({
         "lockdown_types" : LockDownType,
         "date_range" : DateRange,
