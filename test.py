@@ -117,7 +117,7 @@ def main():
            noDays.append(noDaysvar)
            i += 1
           
-          b = (Bar().add_xaxis(noDays).add_yaxis("",cases).set_global_opts(title_opts=opts.TitleOpts( title="Reduce Cases Number Over Time ", subtitle="Reduction of cases based on R0")))
+          b = (Bar().add_xaxis(noDays).add_yaxis("",cases).set_global_opts(title_opts=opts.TitleOpts( title="Increase Cases Number Over Time ", subtitle="Increment of cases based on R0")))
           st_pyecharts(b)         
 
      
