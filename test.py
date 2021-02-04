@@ -106,13 +106,12 @@ def main():
         else :
          st.error('Lockdown is {} '.format(result))
          if statTwoweeksago != 0 :
-          currentRate = round(new_cases/(statTwoweeksago/14),2)
           cases = []
           noDays = []
           targetCase = new_cases
           i = 1
           while i < 8 :
-           targetCase = round(targetCase*(currentRate)**i,0)
+           targetCase = round(targetCase*(1.5)**i,0)
            cases.append(targetCase)
            noDaysvar = str(i) + " Day" 
            noDays.append(noDaysvar)
