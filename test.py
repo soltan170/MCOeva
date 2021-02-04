@@ -102,7 +102,7 @@ def main():
          # Append the new data to the existing chart.
          chart.add_rows(data2)
         else :
-         st.danger('Lockdown is {} '.format(result))
+         st.error('Lockdown is {} '.format(result))
         
  
      
