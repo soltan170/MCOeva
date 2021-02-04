@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 import pickle
 import sklearn
-
+import time
 
 # loading the trained model
 pickle_in = open('randomForest.pkl', 'rb') 
@@ -86,7 +86,20 @@ def main():
     if st.button("Predict"): 
         result = prediction(lockdown_types, new_cases, statTwoweeksago, r_naught)
         st.success('Lockdown is {} '.format(result))
-        st.balloons()
+        # Get some data.
+        data = np.random.randn(10, 2)
+
+        # Show the data as a chart.
+        chart = st.line_chart(data)
+
+        # Wait 1 second, so the change is clearer.
+        time.sleep(1)
+
+        # Grab some more data.
+        data2 = np.random.randn(10, 2)
+
+        # Append the new data to the existing chart.
+        chart.add_rows(data2)
         
  
      
