@@ -85,21 +85,24 @@ def main():
     # when 'Predict' is clicked, make the prediction and store it 
     if st.button("Predict"): 
         result = prediction(lockdown_types, new_cases, statTwoweeksago, r_naught)
-        st.success('Lockdown is {} '.format(result))
-        # Get some data.
-        data = np.random.randn(10, 2)
+        if result == "Effective" :
+         st.success('Lockdown is {} '.format(result))
+         # Get some data.
+         data = np.random.randn(10, 2)
 
-        # Show the data as a chart.
-        chart = st.line_chart(data)
+         # Show the data as a chart.
+         chart = st.line_chart(data)
 
-        # Wait 1 second, so the change is clearer.
-        time.sleep(1)
+         # Wait 1 second, so the change is clearer.
+         time.sleep(1)
 
-        # Grab some more data.
-        data2 = np.random.randn(10, 2)
+         # Grab some more data.
+         data2 = np.random.randn(10, 2)
 
-        # Append the new data to the existing chart.
-        chart.add_rows(data2)
+         # Append the new data to the existing chart.
+         chart.add_rows(data2)
+        else :
+         st.warning('Lockdown is {} '.format(result))
         
  
      
