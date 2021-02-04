@@ -90,21 +90,8 @@ def main():
         result = prediction(lockdown_types, new_cases, statTwoweeksago, r_naught)
         if result == "Effective" :
          st.success('Lockdown is {} '.format(result))
-         # Get some data.
-         data = np.random.randn(10, 2)
-
-         # Show the data as a chart.
-         chart = st.line_chart(data)
-
-         # Wait 1 second, so the change is clearer.
-         time.sleep(1)
-
-         # Grab some more data.
-         data2 = np.random.randn(10, 2)
-      
-         # Append the new data to the existing chart.
-         chart.add_rows(data2)
-         b = (Bar().add_xaxis(["Microsoft", "Amazon", "IBM", "Oracle", "Google", "Alibaba"]).add_yaxis("2017-2018 Revenue in (billion $)", [21.2, 20.4, 10.3, 6.08, 4, 2.2]).set_global_opts(title_opts=opts.TitleOpts( title="Top cloud providers 2018", subtitle="2017-2018 Revenue"),))
+         
+         b = (Bar().add_xaxis(["Microsoft", "Amazon", "IBM", "Oracle", "Google", "Alibaba"]).add_yaxis("2017-2018 Revenue in (billion $)", [21.2, 20.4, 10.3, 6.08, 4, 2.2]).set_global_opts(title_opts=opts.TitleOpts( title="Reduce Cases Number Over Time ", subtitle="reduction of cases based on R0"),))
          st_pyecharts(b)
         else :
          st.error('Lockdown is {} '.format(result))
