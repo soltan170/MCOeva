@@ -55,9 +55,11 @@ def prediction(lockdown_types, new_cases, statTwoweeksago, r_naught ):
 def main():       
     # front end elements of the web page 
     html_temp = """ 
+    <div style ="background-color:#fffff">
     <div style ="background-color:rgba(111, 66, 193, 0.05);padding:15px"> 
     <h1 style ="color:#824b4b;text-align:center;">Lockdown Effectiveness Prediction</h1> 
     </div> 
+    </div>
     """
       
     # display the front end aspect
