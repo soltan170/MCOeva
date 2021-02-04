@@ -102,8 +102,8 @@ def main():
           i += 1
           
          st.success('cases is {} '.format(cases))
+         st.write('Below is a DataFrame:', noDays, 'Above is a dataframe.')
          st.success('currentRate is {} '.format(currentRate))
-         st.success('days is {} '.format(*noDays, sep=", "))
          b = (Bar().add_xaxis(["1 Day"]).add_yaxis("",[1]).set_global_opts(title_opts=opts.TitleOpts( title="Reduce Cases Number Over Time ", subtitle="Reduction of cases based on R0")))
          st_pyecharts(b)
         else :
