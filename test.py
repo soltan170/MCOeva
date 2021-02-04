@@ -66,8 +66,8 @@ def main():
     # following lines create boxes in which user can enter data required to make prediction 
     lockdown_types = st.selectbox('Lockdown Types',("PKP","PKPB","PKPP","Singapore Prelude","Singapore Circuit Breaker","Singapore Phase 1","Singapore Phase 2","Thailand Shutdown","Malaysia No Lockdown","Singapore No Lockdown","Thailand Pre No Lockdown","Thailand Post No Lockdown"))
     new_cases = st.number_input('Today Cases', min_value=0, max_value=1500)
-    r_naught = st.number_input('r_naught', min_value=0.00, max_value=20.0, value=0.02, step=0.01, format="%.2f")
     statTwoweeksago = st.number_input('Two Weeks Before Cases', min_value=0, max_value=1500)
+    r_naught = st.number_input('r_naught', min_value=0.00, max_value=20.0, value=0.02, step=0.01, format="%.2f")
    
     
     result =""
