@@ -91,7 +91,7 @@ def main():
         if result == "Effective" :
          st.success('Lockdown is {} '.format(result))
          
-         b = (Bar().add_xaxis(["Microsoft", "Amazon", "IBM", "Oracle", "Google", "Alibaba"]).add_yaxis("2017-2018 Revenue in (billion $)", [21.2, 20.4, 10.3, 6.08, 4, 2.2]).set_global_opts(title_opts=opts.TitleOpts( title="Reduce Cases Number Over Time ", subtitle="Reduction of cases based on R0")))
+         b = (Bar().add_xaxis(["Microsoft", "Amazon", "IBM", "Oracle", "Google", "Alibaba"]).add_yaxis([21.2, 20.4, 10.3, 6.08, 4, 2.2]).set_global_opts(title_opts=opts.TitleOpts( title="Reduce Cases Number Over Time ", subtitle="Reduction of cases based on R0")))
          st_pyecharts(b)
         else :
          st.error('Lockdown is {} '.format(result))
