@@ -55,7 +55,7 @@ def prediction(lockdown_types, new_cases, statTwoweeksago, r_naught ):
 def main():       
     # front end elements of the web page 
     html_temp = """ 
-    <div style ="background-color:gray;padding:13px"> 
+    <div style ="background-color:gray;padding:12px"> 
     <h1 style ="color:black;text-align:center;">Lockdown Effectiveness Prediction ML App</h1> 
     </div> 
     """
@@ -76,13 +76,7 @@ def main():
         result = prediction(lockdown_types, new_cases, statTwoweeksago, r_naught)
         st.success('Lockdown is {} '.format(result))
         
-    st.beta_container()
-    st.beta_columns(spec)
-    >>> col1, col2 = st.beta_columns(2)
-    >>> col1.subheader('Columnisation')
-    st.beta_expander('Expander')
-    >>> with st.beta_expander('Expand'):
-    >>>     st.write('Juicy deets')   
+ 
      
 if __name__=='__main__': 
     main()
