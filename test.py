@@ -100,15 +100,26 @@ def main():
           noDaysvar = str(i) + " Day" 
           noDays.append(noDaysvar)
           i += 1
-          
-         st.success('cases is {} '.format(cases))
-         st.write('Below is a DataFrame:', noDays, 'Above is a dataframe.')
-         st.success('currentRate is {} '.format(currentRate))
+         
          b = (Bar().add_xaxis(noDays).add_yaxis("",cases).set_global_opts(title_opts=opts.TitleOpts( title="Reduce Cases Number Over Time ", subtitle="Reduction of cases based on R0")))
          st_pyecharts(b)
         else :
          st.error('Lockdown is {} '.format(result))
-        
+         if statTwoweeksago != 0 :
+          currentRate = round(new_cases/statTwoweeksago,2)
+          cases = []
+          noDays = []
+          targetCase = new_cases
+          i = 1
+          while targetCase != 0 :
+           targetCase = round(targetCase*(currentRate)**i,0)
+           cases.append(targetCase)
+           noDaysvar = str(i) + " Day" 
+           noDays.append(noDaysvar)
+           i += 1
+
+          b = (Bar().add_xaxis(noDays).add_yaxis("",cases).set_global_opts(title_opts=opts.TitleOpts( title="Reduce Cases Number Over Time ", subtitle="Reduction of cases based on R0")))
+          st_pyecharts(b)         
 
      
 if __name__=='__main__': 
