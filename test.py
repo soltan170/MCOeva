@@ -82,15 +82,14 @@ def main():
     new_cases = st.number_input('Today Cases', min_value=0, max_value=1500)
     statTwoweeksago = st.number_input('Two Weeks Before Cases', min_value=0, max_value=1500)
     r_naught = st.number_input('r_naught', min_value=0.00, max_value=20.0, value=0.02, step=0.01, format="%.2f")
-    
-    currentRate = new_cases/statTwoweeksago
-    
+   
     result =""
     # when 'Predict' is clicked, make the prediction and store it 
     if st.button("Predict"): 
         result = prediction(lockdown_types, new_cases, statTwoweeksago, r_naught)
         if result == "Effective" :
          st.success('Lockdown is {} '.format(result))
+         currentRate = new_cases/statTwoweeksago
          cases = []
          noDays = []
          targetCase = new_cases
