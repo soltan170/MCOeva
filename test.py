@@ -106,7 +106,7 @@ def main():
         else :
          st.error('Lockdown is {} '.format(result))
          if statTwoweeksago != 0 :
-          currentRate = round(new_cases/statTwoweeksago,2)
+          currentRate = round(new_cases/(statTwoweeksago/14),2)
           cases = []
           noDays = []
           targetCase = new_cases
