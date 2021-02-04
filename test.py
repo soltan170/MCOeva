@@ -83,7 +83,7 @@ def main():
     statTwoweeksago = st.number_input('Two Weeks Before Cases', min_value=0, max_value=1500)
     r_naught = st.number_input('r_naught', min_value=0.00, max_value=20.0, value=0.02, step=0.01, format="%.2f")
     
-
+    currentRate = new_cases/statTwoweeksago
     
     result =""
     # when 'Predict' is clicked, make the prediction and store it 
@@ -96,12 +96,13 @@ def main():
          targetCase = new_cases
          i = 1
          while targetCase != 0 :
-          targetCase = round(targetCase*(r_naught)**i,0)
+          targetCase = round(targetCase*(1-currentRate)**i,0)
           cases.append(targetCase)
           noDays.append(i)
           i += 1
-          st.success('cases is {} '.format(cases))
-          st.success('days is {} '.format(noDays))
+          
+         st.success('cases is {} '.format(cases))
+         st.success('days is {} '.format(noDays))
          b = (Bar().add_xaxis(["Microsoft", "Amazon", "IBM", "Oracle", "Google", "Alibaba"]).add_yaxis("",[21.2, 20.4, 10.3, 6.08, 4, 2.2]).set_global_opts(title_opts=opts.TitleOpts( title="Reduce Cases Number Over Time ", subtitle="Reduction of cases based on R0")))
          st_pyecharts(b)
         else :
