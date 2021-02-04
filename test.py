@@ -83,6 +83,8 @@ def main():
     statTwoweeksago = st.number_input('Two Weeks Before Cases', min_value=0, max_value=1500)
     r_naught = st.number_input('r_naught', min_value=0.00, max_value=20.0, value=0.02, step=0.01, format="%.2f")
     
+    b = (Bar().add_xaxis(["Microsoft", "Amazon", "IBM", "Oracle", "Google", "Alibaba"]).add_yaxis("2017-2018 Revenue in (billion $)", [21.2, 20.4, 10.3, 6.08, 4, 2.2]).set_global_opts(title_opts=opts.TitleOpts( title="Top cloud providers 2018", subtitle="2017-2018 Revenue"),toolbox_opts=opts.ToolboxOpts(),))
+    st_pyecharts(b)
     result =""
     # when 'Predict' is clicked, make the prediction and store it 
     if st.button("Predict"): 
@@ -106,8 +108,7 @@ def main():
         else :
          st.error('Lockdown is {} '.format(result))
         
-     b = (Bar().add_xaxis(["Microsoft", "Amazon", "IBM", "Oracle", "Google", "Alibaba"]).add_yaxis("2017-2018 Revenue in (billion $)", [21.2, 20.4, 10.3, 6.08, 4, 2.2]).set_global_opts(title_opts=opts.TitleOpts( title="Top cloud providers 2018", subtitle="2017-2018 Revenue"),toolbox_opts=opts.ToolboxOpts(),))
-     st_pyecharts(b)
+
      
 if __name__=='__main__': 
     main()
