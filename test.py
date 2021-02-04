@@ -62,7 +62,17 @@ def main():
       
     # display the front end aspect
     st.markdown(html_temp, unsafe_allow_html = True) 
-      
+    page_bg_img = '''
+    <style>
+    body {
+    background-image: url("https://images.unsplash.com/photo-1542281286-9e0a16bb7366");
+    background-size: cover;
+    }
+    </style>
+    '''
+
+    st.markdown(page_bg_img, unsafe_allow_html=True)
+    
     # following lines create boxes in which user can enter data required to make prediction 
     lockdown_types = st.selectbox('Lockdown Types',("PKP","PKPB","PKPP","Singapore Prelude","Singapore Circuit Breaker","Singapore Phase 1","Singapore Phase 2","Thailand Shutdown","Malaysia No Lockdown","Singapore No Lockdown","Thailand Pre No Lockdown","Thailand Post No Lockdown"))
     new_cases = st.number_input('Today Cases', min_value=0, max_value=1500)
