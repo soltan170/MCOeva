@@ -97,7 +97,7 @@ def main():
          while targetCase != 0 :
           targetCase = round(targetCase*(1-currentRate)**i,0)
           cases.append(targetCase)
-          noDays.append(i)
+          noDays.append(i, " Day")
           i += 1
           
          st.success('cases is {} '.format(cases))
