@@ -95,7 +95,7 @@ def main():
          noDays = []
          targetCase = new_cases
          i = 1
-         while targetCase != 0 :
+         while targetCase < 10 :
           targetCase = round(targetCase*(1-currentRate)**i,0)
           cases.append(targetCase)
           noDays.append(i)
