@@ -89,7 +89,7 @@ def main():
         result = prediction(lockdown_types, new_cases, statTwoweeksago, r_naught)
         if result == "Effective" :
          st.success('Lockdown is {} '.format(result))
-         currentRate = new_cases/statTwoweeksago
+         currentRate = round(new_cases/statTwoweeksago,2)
          cases = []
          noDays = []
          targetCase = new_cases
