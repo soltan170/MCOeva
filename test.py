@@ -93,7 +93,7 @@ def main():
      noDays.append(i)
      i += 1
     
-    st.success('cases is {} '.format(len(cases)))
+    st.success('cases is {} '.format(len(noDays)))
     
     result =""
     # when 'Predict' is clicked, make the prediction and store it 
