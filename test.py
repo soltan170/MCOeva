@@ -86,6 +86,7 @@ def main():
     if st.button("Predict"): 
         result = prediction(lockdown_types, new_cases, statTwoweeksago, r_naught)
         st.success('Lockdown is {} '.format(result))
+        st.balloons()
         
  
      
