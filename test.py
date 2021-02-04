@@ -97,14 +97,14 @@ def main():
          while targetCase != 0 :
           targetCase = round(targetCase*(1-currentRate)**i,0)
           cases.append(targetCase)
-          noDaysvar = str(i) + "Day" 
+          noDaysvar = str(i) + " Day" 
           noDays.append(noDaysvar)
           i += 1
           
          st.success('cases is {} '.format(cases))
          st.success('currentRate is {} '.format(currentRate))
          st.success('days is {} '.format(noDays))
-         b = (Bar().add_xaxis(["Microsoft", "Amazon", "IBM", "Oracle", "Google", "Alibaba"]).add_yaxis("",[21.2, 20.4, 10.3, 6.08, 4, 2.2]).set_global_opts(title_opts=opts.TitleOpts( title="Reduce Cases Number Over Time ", subtitle="Reduction of cases based on R0")))
+         b = (Bar().add_xaxis([noDays]).add_yaxis("",[cases).set_global_opts(title_opts=opts.TitleOpts( title="Reduce Cases Number Over Time ", subtitle="Reduction of cases based on R0")))
          st_pyecharts(b)
         else :
          st.error('Lockdown is {} '.format(result))
