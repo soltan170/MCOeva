@@ -8,51 +8,46 @@ import sklearn
 
 
 # loading the trained model
-pickle_in = open('myClassifier.pkl', 'rb') 
+pickle_in = open('randomForest.pkl', 'rb') 
 classifier = pickle.load(pickle_in)
  
 @st.cache()
   
 # defining the function which will make the prediction using the data which the user inputs 
-def prediction(lockdown_types, new_cases, total_case, date_range, r_naught ):   
- 
+def prediction(lockdown_types, new_cases, statTwoweeksago, r_naught ):   
     
-    
-    if lockdown_types == "PKP":
+    if lockdown_types == "Malaysia No Lockdown":
         lockdown_types = 0
-        location = 0
-    elif lockdown_types == "PKPB":
+    elif lockdown_types == "PKP":
         lockdown_types = 1
-        location = 0
-    elif lockdown_types == "PKPP":
+    elif lockdown_types == "PKPB":
         lockdown_types = 2
-        location = 0
-    elif lockdown_types == "SingaporePrelude":
+    elif lockdown_types == "PKPP":
         lockdown_types = 3
-        location = 1
-    elif lockdown_types == "SingaporeCB":
+    elif lockdown_types == "Singapore No Lockdown":
         lockdown_types = 4
-        location = 1
-    elif lockdown_types == "SingaporePhase1":
+    elif lockdown_types == "Singapore Prelude":
+        lockdown_types = 8
+    elif lockdown_types == "Singapore Circuit Breaker":
         lockdown_types = 5
-        location = 1
-    elif lockdown_types == "SingaporePhase2":
-        lockdown_types = 5
-        location = 1
-    elif lockdown_types == "SingaporePhase3":
-        lockdown_types = 5
-        location = 1
-    else :
+    elif lockdown_types == "Singapore Phase 1":
         lockdown_types = 6
-        location = 2
+    elif lockdown_types == "Singapore Phase 2":
+        lockdown_types = 7
+    elif lockdown_types == "Thailand Pre No Lockdown":
+        lockdown_types = 10
+    elif lockdown_types == "Thailand Shutdown":
+        lockdown_types = 11
+    else :
+        lockdown_types = 9
     # Making predictions 
     prediction = classifier.predict( 
-        [[location, new_cases, total_case, lockdown_types, date_range, r_naught]])
+        [[lockdown_types, new_cases, statTwoweeksago, r_naught]])
      
     if prediction == 0:
-        pred = 'Effective'
-    else:
         pred = 'Not Effective'
+    else:
+        pred = 'Effective'
     return pred
       
   
@@ -69,22 +64,18 @@ def main():
     st.markdown(html_temp, unsafe_allow_html = True) 
       
     # following lines create boxes in which user can enter data required to make prediction 
-    lockdown_types = st.selectbox('Lockdown Types',("PKP","PKPB","PKPP","SingaporePrelude","SingaporeCB","SingaporePhase1","SingaporePhase2"))
-    new_cases = st.number_input('Today Cases', min_value=0, max_value=1500)
-    previous_case = st.number_input('Previous Day Cases', min_value=0, max_value=1500)
-    total_case = st.number_input('Total Cases', min_value=0)
-    date_range = st.slider('Date Range', min_value=0, max_value=365)
-    
-    if previous_case == 0 :
-        r_naught = 0
-    else :
-        r_naught = round(new_cases/previous_case,2)
+    lockdown_types = st.selectbox('Lockdown Types',("PKP","PKPB","PKPP","Singapore Prelude","Singapore Circuit Breaker","Singapore Phase 1","Singapore Phase 2","Thailand Shutdown","Malaysia No Lockdown","Singapore No Lockdown","Thailand Pre No Lockdown","Thailand Post No Lockdown"))
+    new_cases = st.number_input('Today Cases', min_value=0.00, max_value=20, value=0.02, step=0.01, format=None)
+    r_naught = st.number_input('r_naught', float(0), float(15), float(0.20), format="%.2f")
+    statTwoweeksago = st.number_input('Two Weeks Before Cases', min_value=0, max_value=1500)
+   
     
     result =""
     # when 'Predict' is clicked, make the prediction and store it 
     if st.button("Predict"): 
-        result = prediction(lockdown_types, new_cases, total_case, date_range, r_naught)
-        st.success('Lockdown is {}'.format(result))
+        result = prediction(lockdown_types, new_cases, statTwoweeksago, r_naught)
+        st.success('Lockdown is {} '.format(result))
+        
         
      
 if __name__=='__main__': 
