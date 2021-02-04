@@ -65,7 +65,7 @@ def main():
     page_bg_img = '''
     <style>
     body {
-    background-image: url("https://preview.colorlib.com/theme/covid/images/illustration.png");
+    background-image: url("https://raw.githubusercontent.com/Ashish-Arya-CS/CovDetec/main/abcd1.png");
     background-size: cover;
     }
     </style>
