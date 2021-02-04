@@ -79,7 +79,15 @@ def main():
     new_cases = st.number_input('Today Cases', min_value=0, max_value=1500)
     statTwoweeksago = st.number_input('Two Weeks Before Cases', min_value=0, max_value=1500)
     r_naught = st.number_input('r_naught', min_value=0.00, max_value=20.0, value=0.02, step=0.01, format="%.2f")
-   
+    
+    st.layout.columns:
+    st.layout.column:
+    st.line_chart(chart_data)
+    st.button
+    st.layout.column(width = 'one-third'):
+    st.write('Some explainer copy inbetween charts.')
+    st.layout.column:
+    st.line_chart(chart_data_2)
     
     result =""
     # when 'Predict' is clicked, make the prediction and store it 
