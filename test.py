@@ -122,7 +122,7 @@ def main():
          st_pyecharts(b)
         else :
          st.error('Lockdown is {} with R0 {}'.format(result,r_naught))
-         if statTwoweeksago != 0 :
+         if r_naught > 1 != 0 :
           cases = []
           noDays = []
           targetCase = new_cases
