@@ -82,7 +82,10 @@ def main():
     new_cases = st.number_input('Today Cases', min_value=0, max_value=5000)
     yesterday_cases = st.number_input('Yesterday Cases', min_value=0, max_value=5000)
     statTwoweeksago = st.number_input('Two Weeks Before Cases', min_value=0, max_value=1500)
-    r_naught = new_cases/yesterday_cases
+    
+    if yesterday_cases != 0 :
+     r_naught = new_cases/yesterday_cases
+     
     result =""
     # when 'Predict' is clicked, make the prediction and store it 
     if st.button("Predict"): 
