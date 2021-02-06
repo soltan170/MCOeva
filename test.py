@@ -84,7 +84,7 @@ def main():
     statTwoweeksago = st.number_input('Two Weeks Before Cases', min_value=0, max_value=1500)
     
     if yesterday_cases != 0 :
-     r_naught = new_cases/yesterday_cases
+     r_naught = round(new_cases/yesterday_cases,2)
      
     result =""
     # when 'Predict' is clicked, make the prediction and store it 
