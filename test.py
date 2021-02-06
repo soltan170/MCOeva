@@ -91,7 +91,7 @@ def main():
     if st.button("Predict"): 
         result = prediction(lockdown_types, new_cases, statTwoweeksago, r_naught)
         if result == "Effective" :
-         st.success('Lockdown is {} '.format(result))
+         st.success('Lockdown is {} with R0 {}'.format(result,r_naught))
          currentRate = round(new_cases/statTwoweeksago,2)
          cases = []
          noDays = []
@@ -107,7 +107,7 @@ def main():
          b = (Bar().add_xaxis(noDays).add_yaxis("",cases).set_global_opts(title_opts=opts.TitleOpts( title="Predicted Case Number", subtitle="Next few days number of cases prediction based on R0")))
          st_pyecharts(b)
         else :
-         st.error('Lockdown is {} '.format(result))
+         st.error('Lockdown is {} with R0 {}'.format(result,r_naught))
          if statTwoweeksago != 0 :
           cases = []
           noDays = []
