@@ -104,7 +104,7 @@ def main():
           noDays.append(noDaysvar)
           i += 1
          
-         b = (Bar().add_xaxis(noDays).add_yaxis("",cases).set_global_opts(title_opts=opts.TitleOpts( title="Predicted Case Number", subtitle="next few days number of cases prediction based on R0")))
+         b = (Bar().add_xaxis(noDays).add_yaxis("",cases).set_global_opts(title_opts=opts.TitleOpts( title="Predicted Case Number", subtitle="Next few days number of cases prediction based on R0")))
          st_pyecharts(b)
         else :
          st.error('Lockdown is {} '.format(result))
@@ -120,7 +120,7 @@ def main():
            noDays.append(noDaysvar)
            i += 1
           
-          b = (Bar().add_xaxis(noDays).add_yaxis("",cases).set_global_opts(title_opts=opts.TitleOpts( title="Predicted Case Number", subtitle="next few days number of cases prediction based on R0")))
+          b = (Bar().add_xaxis(noDays).add_yaxis("",cases).set_global_opts(title_opts=opts.TitleOpts( title="Predicted Case Number", subtitle="Next few days number of cases prediction based on R0")))
           st_pyecharts(b)         
 
      
