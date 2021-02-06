@@ -92,19 +92,33 @@ def main():
         result = prediction(lockdown_types, new_cases, statTwoweeksago, r_naught)
         if result == "Effective" :
          st.success('Lockdown is {} with R0 {}'.format(result,r_naught))
-         currentRate = round(new_cases/statTwoweeksago,2)
-         cases = []
-         noDays = []
-         targetCase = new_cases
-         i = 1
-         while i < 8 :
-          targetCase = round(targetCase*(1-r_naught)**i,0)
-          cases.append(targetCase)
-          noDaysvar = " +" + str(i) + " Day" 
-          noDays.append(noDaysvar)
-          i += 1
+         if r_naught < 1 :
+           currentRate = round(new_cases/statTwoweeksago,2)
+           cases = []
+           noDays = []
+           targetCase = new_cases
+           i = 1
+           while i < 8 :
+            targetCase = round(targetCase*(1-r_naught)**i,0)
+            cases.append(targetCase)
+            noDaysvar = " +" + str(i) + " Day" 
+            noDays.append(noDaysvar)
+            i += 1
+            
+         else :
+          currentRate = round(new_cases/statTwoweeksago,2)
+          cases = []
+          noDays = []
+          targetCase = new_cases
+          i = 1
+          while i < 8 :
+           targetCase = round(targetCase*(1-currentRate)**i,0)
+           cases.append(targetCase)
+           noDaysvar = " +" + str(i) + " Day" 
+           noDays.append(noDaysvar)
+           i += 1
          
-         b = (Bar().add_xaxis(noDays).add_yaxis("",cases).set_global_opts(title_opts=opts.TitleOpts( title="Predicted Case Number", subtitle="Next few days number of cases prediction based on R0")))
+         b = (Bar().add_xaxis(noDays).add_yaxis("",cases).set_global_opts(title_opts=opts.TitleOpts( title="Predicted New Case Number", subtitle="Next few days number of new cases prediction based on R0")))
          st_pyecharts(b)
         else :
          st.error('Lockdown is {} with R0 {}'.format(result,r_naught))
@@ -120,7 +134,7 @@ def main():
            noDays.append(noDaysvar)
            i += 1
           
-          b = (Bar().add_xaxis(noDays).add_yaxis("",cases).set_global_opts(title_opts=opts.TitleOpts( title="Predicted Case Number", subtitle="Next few days number of cases prediction based on R0")))
+          b = (Bar().add_xaxis(noDays).add_yaxis("",cases).set_global_opts(title_opts=opts.TitleOpts( title="Predicted New Case Number", subtitle="Next few days number of new cases prediction based on R0")))
           st_pyecharts(b)         
 
      
