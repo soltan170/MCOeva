@@ -98,7 +98,7 @@ def main():
          targetCase = new_cases
          i = 1
          while i < 8 :
-          targetCase = round(targetCase*(1-currentRate)**i,0)
+          targetCase = round(targetCase*(1-r_naught)**i,0)
           cases.append(targetCase)
           noDaysvar = " +" + str(i) + " Day" 
           noDays.append(noDaysvar)
